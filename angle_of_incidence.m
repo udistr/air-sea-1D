@@ -1,6 +1,6 @@
 function y=angle_of_incidence(lat,lon,jd,time)
 % angle_of_incidence calculates the cosine of the sun incident angle
-%   C = ADDME(lat,lon,jd,time) calculates the cosine of the sun incident angle for 
+%   y = ANGLE_OF_INCIDENCE(lat,lon,jd,time) calculates the cosine of the sun incident angle for 
 %   a given location (lat,lon), julian day (jd) and time in hours and fraction of hours.
 
 % inclination angle
