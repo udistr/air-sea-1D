@@ -1,7 +1,9 @@
 function [kM, kS]=holtslag(Tv,q,U,V,LH,SH,ustar,ZF)
+% a vertical diffusion scheme based on Holtslag and Boville (1993)
+% Includes enhenced diffusion below the PBL
 
 %TF-turbulent fluxes, positive upward
-%T-virtual potential temperature
+%Tv-virtual potential temperature
 
 Rcrit=0.5;
 gravity_mks=9.81;
@@ -21,9 +23,8 @@ SZM=length(ZM);
 
 ZD=Z(1):0.01*(Z(1)):Z(end);
 
-%TF=SH.*(1+0.61.*q)./rhoa./cpa+humid_fac.*((Tv(1)+273.15)./(1+humid_fac*q)).*LH./rhoa./Av;
-
-TF=(SH+LH)./rhoa./cpa;
+TF=SH.*(1+humid_fac.*q)./rhoa./cpa+humid_fac.*(Tv(1)./(1+humid_fac*q)).*LH./rhoa./Av;
+%TF=(SH+LH)./rhoa./cpa;
 
 L=-Tv(1).*ustar.^3./(karman.*gravity_mks.*TF);
 HD=eps.*ZD./L;

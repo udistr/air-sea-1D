@@ -96,7 +96,7 @@ for sf=0:nloop
     THETA0=ones(n,1)*THETA(1,end)+1;%+gamma_blk*H+0.01;%+0.51;%+SW*kappa/cpa*dt;
     T0=ones(n+1,vlev).*THETA(1,end);%repmat((16+(vlev-1:-1:0)/vlev*8),n+1,1);
     T(:,:)=T0;
-    T(:,1)=T0(:,1); T(1,:)=Ti;%T0(1,1)+15*((vlev:-1:1)/vlev-1);
+    T(:,1)=T0(:,1); T(1,:)=T0(1,1)+15*((vlev:-1:1)/vlev-1);
     SST(:)=T(:,1);
     ssq = saltsat*cvapor_fac*exp(-cvapor_exp./(TA(1)+d2k))./rhoa(1,1);
     RH=0.5;
@@ -181,7 +181,7 @@ for sf=0:nloop
         %[Kmo(i-1,1:vlev-1), Kto(i-1,1:vlev-1)]=Pacanowski(Rig);
         Uo=(vlev:-1:1)/vlev/10; Vo=zeros(size(Uo)); FWflux=zeros(size(U));
         [Kmo(i-1,:), Kto(i-1,:), ~]=...
-            large2(T(i-1,:),repmat(S,1,vlev),UO(i,:),Vo,Qnet(i-1),0,ustar(i-1),Z,lat);
+            large(T(i-1,:),repmat(S,1,vlev),UO(i,:),Vo,Qnet(i-1),0,ustar(i-1),Z,lat);
         
         kT=Kto(i-1,:);
         kM=Kmo(i-1,:);

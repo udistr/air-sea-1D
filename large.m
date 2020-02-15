@@ -1,4 +1,4 @@
-function [kM, kT, kS]=large2(T,S,U,V,Qnet,FWflux,ustar,ZF,lat)
+function [kM, kT, kS]=large(T,S,U,V,Qnet,FWflux,ustar,ZF,lat)
 
 %{
 T=T(i,:)';
