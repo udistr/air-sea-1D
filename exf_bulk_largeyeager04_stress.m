@@ -1,11 +1,4 @@
 function [mystruct_out]=exf_bulk_largeyeager04_stress(mystruct_in,varargin)
-
-%varargin	[hu ht hq]
-%		[hu ht hq],dragCoeff
-
-tmp1=fieldnames(mystruct_in);
-if length(tmp1)>6; doNetFluxes=1; end
-
 % formulae in short:
 %   wind stress = (ust,vst) = rhoA * Cd * Ws * (del.u,del.v)
 %   Sensib Heat flux = fsha = rhoA * Ch * Ws * del.T * CpAir
@@ -15,7 +8,6 @@ if length(tmp1)>6; doNetFluxes=1; end
 %      del.T = Tair - Tsurf ; del.Q = Qair - Qsurf ;
 %      Cd,Ch,Ce = drag coefficient, Stanton number and Dalton number
 %            respectively [no-units], function of height & stability
-
 
 %parameters from exf_readparms.F
 if nargin==1
@@ -36,9 +28,9 @@ gravity_mks=9.81;
 cen2kel=273.150;
 humid_fac=0.606;
 cvapor_fac=640380;
-cvapor_fac_ice=11637800;
+%cvapor_fac_ice=11637800;
 cvapor_exp=5107.4;
-cvapor_exp_ice=5897.8;
+%cvapor_exp_ice=5897.8;
 saltsat=0.980;
 %atmrho=1.2;
 gamma_blk=0.01;
